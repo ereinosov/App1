@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Registro de Usuarios"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/imgUsuario"
         app:layout_constraintStart_toStartOf="@+id/imgUsuario"
         app:layout_constraintTop_toBottomOf="@+id/imgUsuario" />
@@ -44,6 +45,84 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+
+            <RadioButton
+                android:id="@+id/radioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="RadioButton"
+                app:layout_constraintEnd_toEndOf="@+id/tilTelefono"
+                app:layout_constraintStart_toStartOf="@+id/tilTelefono"
+                app:layout_constraintTop_toBottomOf="@+id/tilTelefono" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilNombre"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/usuario"
+                    android:hint="Nombres" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilApellido"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@id/tilNombre"
+                app:layout_constraintStart_toStartOf="@id/tilNombre"
+                app:layout_constraintTop_toBottomOf="@+id/tilNombre">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietApellidos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/usuario"
+                    android:hint="Apellidos" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilCedula"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@id/tilApellido"
+                app:layout_constraintStart_toStartOf="@id/tilApellido"
+                app:layout_constraintTop_toBottomOf="@+id/tilApellido">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietCedula"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/cedula"
+                    android:hint="Cédula" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilTelefono"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@id/tilCedula"
+                app:layout_constraintStart_toStartOf="@id/tilCedula"
+                app:layout_constraintTop_toBottomOf="@+id/tilCedula">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietTelefono"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/cedula"
+                    android:hint="Teléfono" />
+            </com.google.android.material.textfield.TextInputLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
