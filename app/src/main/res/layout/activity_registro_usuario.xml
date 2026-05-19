@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Registro de Usuarios"
+        android:text="Registro de Usuario"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/imgUsuario"
         app:layout_constraintStart_toStartOf="@+id/imgUsuario"
@@ -36,7 +36,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btnGuardarPerfil"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtRegistro">
@@ -46,15 +46,6 @@
             android:layout_height="wrap_content">
 
 
-            <RadioButton
-                android:id="@+id/radioButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="RadioButton"
-                app:layout_constraintEnd_toEndOf="@+id/tilTelefono"
-                app:layout_constraintStart_toStartOf="@+id/tilTelefono"
-                app:layout_constraintTop_toBottomOf="@+id/tilTelefono" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilNombre"
@@ -72,7 +63,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/usuario"
-                    android:hint="Nombres" />
+                    android:hint="Nombres"
+                    android:inputType="textPersonName"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -89,10 +81,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/usuario"
-                    android:hint="Apellidos" />
+                    android:hint="Apellidos"
+                    android:inputType="textPersonName"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilCedula"
+                android:id="@+id/tilCorreo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -101,29 +94,139 @@
                 app:layout_constraintTop_toBottomOf="@+id/tilApellido">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietCedula"
+                    android:id="@+id/tietCorreo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/cedula"
-                    android:hint="Cédula" />
+                    android:hint="Correo electrónico"
+                    android:inputType="textEmailAddress"/>
             </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilTelefono"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="@id/tilCedula"
-                app:layout_constraintStart_toStartOf="@id/tilCedula"
-                app:layout_constraintTop_toBottomOf="@+id/tilCedula">
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@id/tilCorreo"
+                app:layout_constraintStart_toStartOf="@id/tilCorreo"
+                app:layout_constraintTop_toBottomOf="@+id/tilCorreo">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tietTelefono"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/cedula"
-                    android:hint="Teléfono" />
+                    android:hint="Teléfono"
+                    android:inputType="phone"/>
             </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilFechaNacimiento"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:endIconMode="custom"
+                app:endIconDrawable="@drawable/calendario"
+                app:layout_constraintEnd_toEndOf="@id/tilTelefono"
+                app:layout_constraintStart_toStartOf="@id/tilTelefono"
+                app:layout_constraintTop_toBottomOf="@+id/tilTelefono">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietFechaNacimiento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Fecha de nacimiento"
+                    android:focusable="false"
+                    android:drawableStart="@drawable/calendario"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilTipoDocumento"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="Tipo de documento"
+                app:layout_constraintEnd_toEndOf="@id/tilFechaNacimiento"
+                app:layout_constraintStart_toStartOf="@id/tilFechaNacimiento"
+                app:layout_constraintTop_toBottomOf="@+id/tilFechaNacimiento">
+
+                <AutoCompleteTextView
+                    android:id="@+id/actTipoDocumento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:inputType="none"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:id="@+id/tvGenero"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Género"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@id/tilCedula"
+                app:layout_constraintStart_toStartOf="@id/tilCedula"
+                app:layout_constraintTop_toBottomOf="@+id/tilCedula" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilCedula"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@id/tilTipoDocumento"
+                app:layout_constraintStart_toStartOf="@id/tilTipoDocumento"
+                app:layout_constraintTop_toBottomOf="@+id/tilTipoDocumento">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietCedula"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/cedula"
+                    android:hint="Número de documento"
+                    android:inputType="number"/>
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <RadioGroup
+                android:id="@+id/rgGenero"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@id/tvGenero"
+                app:layout_constraintStart_toStartOf="@id/tvGenero"
+                app:layout_constraintTop_toBottomOf="@+id/tvGenero">
+
+                <RadioButton
+                    android:id="@+id/rbMasculino"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Masculino"/>
+
+                <RadioButton
+                    android:id="@+id/rbFemenino"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Femenino"/>
+
+                <RadioButton
+                    android:id="@+id/rbOtro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Otro"/>
+
+            </RadioGroup>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
+    <Button
+        android:id="@+id/btnGuardarPerfil"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Guardar perfil"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
